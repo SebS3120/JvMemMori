@@ -8,7 +8,7 @@ public class TrainWaypointMovement : MonoBehaviour
 
     public float speed = 5f;
 
-    bool goLeft = false;
+    public bool goLeft = false;
 
     Transform[] activePath;
     int waypointIndex = 0;
