@@ -2,32 +2,64 @@ using UnityEngine;
 
 public class TrainWaypointMovement : MonoBehaviour
 {
-    public Transform[] waypoints;
-    public float speed = 10f;
+    public Transform[] mainPath;
+    public Transform[] straightPath;
+    public Transform[] leftPath;
 
-    private int currentWaypoint = 0;
+    public float speed = 5f;
+
+    bool goLeft = false;
+
+    Transform[] activePath;
+    int waypointIndex = 0;
+
+    void Start()
+    {
+        activePath = mainPath;
+        transform.position = activePath[0].position;
+    }
 
     void Update()
     {
-        if (waypoints.Length == 0) return;
+        // PLAYER INPUT
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+            goLeft = true;
 
-        Transform target = waypoints[currentWaypoint];
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+            goLeft = false;
 
+        MoveTrain();
+    }
+
+    void MoveTrain()
+    {
+        Transform target = activePath[waypointIndex];
+
+        // rotate toward waypoint
+        transform.LookAt(target);
+
+        // move forward
         transform.position = Vector3.MoveTowards(
             transform.position,
             target.position,
             speed * Time.deltaTime
         );
 
-        transform.LookAt(target);
-
-        if (Vector3.Distance(transform.position, target.position) < 0.5f)
+        if (Vector3.Distance(transform.position, target.position) < 0.2f)
         {
-            currentWaypoint++;
+            waypointIndex++;
 
-            if (currentWaypoint >= waypoints.Length)
+            if (waypointIndex >= activePath.Length)
             {
-                enabled = false;
+                if (activePath == mainPath)
+                {
+                    activePath = goLeft ? leftPath : straightPath;
+                    waypointIndex = 0;
+                }
+                else
+                {
+                    enabled = false;
+                }
             }
         }
     }
