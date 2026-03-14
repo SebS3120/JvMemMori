@@ -47,7 +47,7 @@ public class JunctionInput : MonoBehaviour
         if (playerInZone)
         {
             GUI.Label(
-                new Rect(Screen.width / 2 - 200, 20, 400, 40),
+                new Rect(Screen.width / 10, 10, 500, 50),
                 message
             );
         }
