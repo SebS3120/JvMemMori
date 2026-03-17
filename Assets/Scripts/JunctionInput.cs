@@ -1,18 +1,28 @@
 ﻿using UnityEngine;
+using TMPro;
 
 public class JunctionInput : MonoBehaviour
 {
     public TrainWaypointMovement train;
+    public TextMeshProUGUI messageText;
 
     bool playerInZone = false;
-    string message = "";
+    bool decisionLocked = false;
+
+    void Start()
+    {
+        messageText.gameObject.SetActive(false);
+    }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Train"))
         {
             playerInZone = true;
-            message = "JUNCTION AHEAD: ← LEFT to turn | → RIGHT to stay straight";
+            decisionLocked = false;
+
+            messageText.text = "VITE!\nUtilisez les flèches pour selectionner\nla BONNE rail";
+            messageText.gameObject.SetActive(true);
         }
     }
 
@@ -21,35 +31,32 @@ public class JunctionInput : MonoBehaviour
         if (other.CompareTag("Train"))
         {
             playerInZone = false;
-            message = "";
+            decisionLocked = true;
+
+            messageText.text = "Choix vérouillé";
+            Invoke("HideMessage", 2f);
         }
     }
 
     void Update()
     {
-        if (!playerInZone) return;
+        if (!playerInZone || decisionLocked) return;
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             train.goLeft = true;
-            message = "TRACK SET TO LEFT";
+            messageText.text = "Jonction GAUCHE selectionnée";
         }
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             train.goLeft = false;
-            message = "TRACK SET TO STRAIGHT";
+            messageText.text = "Train continue tout droit";
         }
     }
 
-    void OnGUI()
+    void HideMessage()
     {
-        if (playerInZone)
-        {
-            GUI.Label(
-                new Rect(Screen.width / 10, 10, 500, 50),
-                message
-            );
-        }
+        messageText.gameObject.SetActive(false);
     }
 }
