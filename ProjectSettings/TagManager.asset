@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Train
+  - Terrain
   layers:
   - Default
   - TransparentFX
