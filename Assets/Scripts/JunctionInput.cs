@@ -21,7 +21,7 @@ public class JunctionInput : MonoBehaviour
             playerInZone = true;
             decisionLocked = false;
 
-            messageText.text = "VITE!\nUtilisez les flèches pour selectionner\nla BONNE rail";
+            messageText.text = "VITE!\nUtilisez les flèches pour sélectionner\nla BONNE rail";
             messageText.gameObject.SetActive(true);
         }
     }
@@ -45,7 +45,7 @@ public class JunctionInput : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             train.goLeft = true;
-            messageText.text = "Jonction GAUCHE selectionnée";
+            messageText.text = "Jonction GAUCHE sélectionnée";
         }
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
