@@ -3,26 +3,34 @@ using TMPro;
 
 public class JunctionInput : MonoBehaviour
 {
-    public TrainWaypointMovement train;
-    public TextMeshProUGUI messageText;
+    public TrainWaypointMovement train;   // your train movement script
+    public TrainLever lever;              // assign your lever object here
+    public TextMeshProUGUI messageText;   // your on-screen UI text
 
-    bool playerInZone = false;
+    bool trainInZone = false;
     bool decisionLocked = false;
 
     void Start()
     {
-        messageText.gameObject.SetActive(false);
+        if (messageText != null)
+            messageText.gameObject.SetActive(false);
+
+        if (lever != null)
+            lever.currentDirection = TrainLever.LeverDirection.Neutral; // start neutral
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Train"))
         {
-            playerInZone = true;
+            trainInZone = true;
             decisionLocked = false;
 
-            messageText.text = "VITE!\nUtilisez les flèches pour sélectionner\nla BONNE rail";
-            messageText.gameObject.SetActive(true);
+            if (messageText != null)
+            {
+                messageText.text = "VITE!\nUtilisez le levier pour sélectionner le BON rail";
+                messageText.gameObject.SetActive(true);
+            }
         }
     }
 
@@ -30,33 +38,40 @@ public class JunctionInput : MonoBehaviour
     {
         if (other.CompareTag("Train"))
         {
-            playerInZone = false;
+            trainInZone = false;
             decisionLocked = true;
 
-            messageText.text = "Choix vérouillé";
-            Invoke("HideMessage", 2f);
+            if (messageText != null)
+            {
+                messageText.text = "Choix verrouillé";
+                Invoke("HideMessage", 2f);
+            }
         }
     }
 
     void Update()
     {
-        if (!playerInZone || decisionLocked) return;
+        if (!trainInZone || decisionLocked || lever == null) return;
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        // Only apply if lever is Left or Right (ignore Neutral)
+        if (lever.currentDirection == TrainLever.LeverDirection.Left)
         {
             train.goLeft = true;
-            messageText.text = "Jonction GAUCHE sélectionnée";
+            if (messageText != null)
+                messageText.text = "Jonction GAUCHE sélectionnée";
         }
-
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if (lever.currentDirection == TrainLever.LeverDirection.Right)
         {
             train.goLeft = false;
-            messageText.text = "Train continue tout droit";
+            if (messageText != null)
+                messageText.text = "Train continue tout droit";
         }
+        // If lever is Neutral, do nothing → keeps last valid selection
     }
 
     void HideMessage()
     {
-        messageText.gameObject.SetActive(false);
+        if (messageText != null)
+            messageText.gameObject.SetActive(false);
     }
 }
