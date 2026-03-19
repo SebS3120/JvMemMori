@@ -5,6 +5,9 @@ public class RestartGame : MonoBehaviour
 {
     public void Restart()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

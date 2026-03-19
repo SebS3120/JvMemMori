@@ -22,6 +22,8 @@ public class CrashDetector : MonoBehaviour
             StartCoroutine(FadeOutMusic());
 
             gameOverCanvas.SetActive(true);
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
     }
 
