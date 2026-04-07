@@ -2,31 +2,23 @@
 
 public class TrainWaypointMovement : MonoBehaviour
 {
-    public Transform[] mainPath;
-    public Transform[] rightPath;
-    public Transform[] leftPath;
-
     public float speed = 5f;
 
-    public bool goLeft = false;
+    [HideInInspector] public bool goLeft = false;
+    
+    public Transform[] startingPath;
 
-    Transform[] activePath;
-    int waypointIndex = 0;
+    private Transform[] activePath;
+    private int waypointIndex = 0;
 
     void Start()
     {
-        activePath = mainPath;
-        transform.position = activePath[0].position;
+        SetPath(startingPath);
     }
 
     void Update()
     {
-        // PLAYER INPUT
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
-            goLeft = true;
-
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-            goLeft = false;
+        if (activePath == null || activePath.Length == 0) return;
 
         MoveTrain();
     }
@@ -35,33 +27,48 @@ public class TrainWaypointMovement : MonoBehaviour
     {
         Transform target = activePath[waypointIndex];
 
-        // rotate towrds waypoint
+        // Rotate toward target
         transform.LookAt(target);
 
-     
-
-        // move forward
+        // Move toward waypoint
         transform.position = Vector3.MoveTowards(
             transform.position,
             target.position,
             speed * Time.deltaTime
         );
 
+        // Check if reached waypoint
         if (Vector3.Distance(transform.position, target.position) < 0.2f)
         {
             waypointIndex++;
 
+            // Stop at end of segment (wait for next junction)
             if (waypointIndex >= activePath.Length)
             {
-                if (activePath == mainPath)
-                {
-                    activePath = goLeft ? leftPath : rightPath;
-                    waypointIndex = 0;
-                }
-                else
-                {
-                    enabled = false;
-                }
+                waypointIndex = activePath.Length - 1;
+            }
+        }
+    }
+
+    public void SetPath(Transform[] newPath)
+    {
+        activePath = newPath;
+        waypointIndex = 0;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Junction"))
+        {
+            Junction junction = other.GetComponent<Junction>();
+
+            if (junction != null)
+            {
+                Transform[] nextPath = goLeft 
+                    ? junction.leftPath 
+                    : junction.rightPath;
+
+                SetPath(nextPath);
             }
         }
     }
