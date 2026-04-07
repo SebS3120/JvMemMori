@@ -3,7 +3,7 @@
 public class TrainWaypointMovement : MonoBehaviour
 {
     public Transform[] mainPath;
-    public Transform[] straightPath;
+    public Transform[] rightPath;
     public Transform[] leftPath;
 
     public float speed = 5f;
@@ -55,7 +55,7 @@ public class TrainWaypointMovement : MonoBehaviour
             {
                 if (activePath == mainPath)
                 {
-                    activePath = goLeft ? leftPath : straightPath;
+                    activePath = goLeft ? leftPath : rightPath;
                     waypointIndex = 0;
                 }
                 else
