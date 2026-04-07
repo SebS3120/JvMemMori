@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TrainWaypointMovement : MonoBehaviour
 {
@@ -35,8 +35,10 @@ public class TrainWaypointMovement : MonoBehaviour
     {
         Transform target = activePath[waypointIndex];
 
-        // rotate toward waypoint
+        // rotate towrds waypoint
         transform.LookAt(target);
+
+     
 
         // move forward
         transform.position = Vector3.MoveTowards(
