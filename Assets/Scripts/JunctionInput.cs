@@ -64,7 +64,7 @@ public class JunctionInput : MonoBehaviour
         {
             train.goLeft = false;
             if (messageText != null)
-                messageText.text = "Jonction DROITE sélectionnée";
+                messageText.text = "Train continue tout droit";
         }
         // If lever is Neutral, do nothing → keeps last valid selection
     }
