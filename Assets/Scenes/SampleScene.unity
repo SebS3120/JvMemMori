@@ -2194,7 +2194,7 @@ Transform:
   m_GameObject: {fileID: 75602863}
   serializedVersion: 2
   m_LocalRotation: {x: -0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -4.9349, y: -0.44539228, z: 0.010100097}
+  m_LocalPosition: {x: -3.691, y: -0.248, z: 0.010100097}
   m_LocalScale: {x: 0.0067208814, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7397,8 +7397,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1472850193}
   - {fileID: 591080305}
+  - {fileID: 1472850193}
   - {fileID: 2126119442}
   - {fileID: 1550422908}
   m_Father: {fileID: 2005006119}
@@ -21066,7 +21066,7 @@ GameObject:
   m_Component:
   - component: {fileID: 593922546}
   m_Layer: 0
-  m_Name: fake rocks right junction 1
+  m_Name: J2 right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29596,7 +29596,7 @@ GameObject:
   m_Component:
   - component: {fileID: 821506231}
   m_Layer: 0
-  m_Name: fake rocks left junction 2 (4)
+  m_Name: j3-4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41262,7 +41262,7 @@ Transform:
   m_GameObject: {fileID: 1096661796}
   serializedVersion: 2
   m_LocalRotation: {x: -0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -3.518904, y: 0.2806434, z: 0.010100097}
+  m_LocalPosition: {x: -2.658, y: 0.2806434, z: 0.010100097}
   m_LocalScale: {x: 0.0067208814, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -49065,7 +49065,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1301262446}
   m_Layer: 0
-  m_Name: fake rocks left junction 2
+  m_Name: J2 left behind
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58539,7 +58539,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1524963492}
   m_Layer: 0
-  m_Name: fake rocks left junction 2 (1)
+  m_Name: j1-2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -63766,11 +63766,11 @@ Transform:
   - {fileID: 681431510}
   - {fileID: 1269735008}
   - {fileID: 825936073}
+  - {fileID: 1524963492}
   - {fileID: 593922546}
   - {fileID: 1301262446}
-  - {fileID: 821506231}
-  - {fileID: 1524963492}
   - {fileID: 2078365935}
+  - {fileID: 821506231}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1672563562
@@ -77736,7 +77736,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2078365935}
   m_Layer: 0
-  m_Name: shorter section straight (3)
+  m_Name: J3 right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
