@@ -1,84 +1,71 @@
 ﻿using UnityEngine;
-using TMPro; // <-- important
 
 public class TrainLever : MonoBehaviour
 {
-    public enum LeverDirection { Neutral, Left, Right }
+    public enum LeverDirection { Left, Right, Neutral }
     public LeverDirection currentDirection = LeverDirection.Neutral;
 
-    public Transform leverHandle;
-    public Vector3 neutralRotation = new Vector3(0, 0, 0);
-    public Vector3 leftRotation = new Vector3(0, 0, -30);
-    public Vector3 rightRotation = new Vector3(0, 0, 30);
+    public float rotationAngle = 30f;
+    public float rotationSpeed = 5f;
 
-    public TextMeshProUGUI interactPrompt; // <-- changed to TMP
-
-    bool playerInRange = false;
+    private Quaternion neutralRotation;
+    private Quaternion targetRotation;
 
     void Start()
     {
-        UpdateVisual();
-        if (interactPrompt != null)
-            interactPrompt.gameObject.SetActive(false);
+        neutralRotation = transform.localRotation;
+        targetRotation = neutralRotation;
     }
 
     void Update()
     {
-        if (playerInRange && Input.GetKeyDown(KeyCode.E))
-        {
-            // Toggle between Left and Right
-            if (currentDirection == LeverDirection.Neutral || currentDirection == LeverDirection.Right)
-                currentDirection = LeverDirection.Left;
-            else if (currentDirection == LeverDirection.Left)
-                currentDirection = LeverDirection.Right;
+        HandleInput();
+        UpdateTargetRotation();
 
-            UpdateVisual();
-            Debug.Log("Lever set to: " + currentDirection);
+        transform.localRotation = Quaternion.Lerp(
+            transform.localRotation,
+            targetRotation,
+            Time.deltaTime * rotationSpeed
+        );
+    }
+
+    void HandleInput()
+    {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            CycleDirection();
         }
     }
 
-    void UpdateVisual()
+    void CycleDirection()
     {
-        if (leverHandle != null)
+        if (currentDirection == LeverDirection.Neutral)
         {
-            switch (currentDirection)
-            {
-                case LeverDirection.Neutral:
-                    leverHandle.localEulerAngles = neutralRotation;
-                    break;
-                case LeverDirection.Left:
-                    leverHandle.localEulerAngles = leftRotation;
-                    break;
-                case LeverDirection.Right:
-                    leverHandle.localEulerAngles = rightRotation;
-                    break;
-            }
+            currentDirection = LeverDirection.Left;
+        }
+        else if (currentDirection == LeverDirection.Left)
+        {
+            currentDirection = LeverDirection.Right;
+        }
+        else
+        {
+            currentDirection = LeverDirection.Left;
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    void UpdateTargetRotation()
     {
-        if (other.CompareTag("Player"))
+        if (currentDirection == LeverDirection.Left)
         {
-            playerInRange = true;
-            if (interactPrompt != null)
-                interactPrompt.gameObject.SetActive(true);
+            targetRotation = neutralRotation * Quaternion.Euler(-rotationAngle, 0, 0);
         }
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
+        else if (currentDirection == LeverDirection.Right)
         {
-            playerInRange = false;
-            if (interactPrompt != null)
-                interactPrompt.gameObject.SetActive(false);
+            targetRotation = neutralRotation * Quaternion.Euler(rotationAngle, 0, 0);
         }
-    }
-
-    public void ResetToNeutral()
-    {
-        currentDirection = LeverDirection.Neutral;
-        UpdateVisual();
+        else
+        {
+            targetRotation = neutralRotation;
+        }
     }
 }
