@@ -8163,6 +8163,75 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaypointVisualizer
   nextWaypoint: {fileID: 1118620649}
+--- !u!1 &696725527
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 696725530}
+  - component: {fileID: 696725529}
+  - component: {fileID: 696725528}
+  m_Layer: 0
+  m_Name: Junction5Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &696725528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696725527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf5f3f25ba6565a4c81d1a3e6a79b78e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::JunctionInput
+  train: {fileID: 1111236510}
+  lever: {fileID: 700393421}
+  messageText: {fileID: 134932371}
+--- !u!65 &696725529
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696725527}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 0.6646581}
+  m_Center: {x: 0, y: 0, z: 0.053661577}
+--- !u!4 &696725530
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696725527}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.7, y: 1.7, z: 583.3}
+  m_LocalScale: {x: 4.1441, y: 1, z: 92.884796}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &700393419 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 05bb2ac34e09afb478b6b9bafffa1e84, type: 3}
@@ -24621,6 +24690,7 @@ SceneRoots:
   - {fileID: 1623464942}
   - {fileID: 1611084920}
   - {fileID: 204061457}
+  - {fileID: 696725530}
   - {fileID: 1526386666}
   - {fileID: 1364092297}
   - {fileID: 1132930734}
