@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class CrashDetector : MonoBehaviour
@@ -8,8 +8,9 @@ public class CrashDetector : MonoBehaviour
 
     public AudioSource crashSound;
     public AudioSource musicSource;
+    public AudioSource trainSource; // 🔊 ADD THIS
 
-    public float fadeDuration = 2f; // how long the fade takes
+    public float fadeDuration = 2f;
 
     void OnTriggerEnter(Collider other)
     {
@@ -19,7 +20,9 @@ public class CrashDetector : MonoBehaviour
 
             crashSound.Play();
 
-            StartCoroutine(FadeOutMusic());
+            // 🔊 Fade BOTH audio sources
+            StartCoroutine(FadeOutAudio(musicSource));
+            StartCoroutine(FadeOutAudio(trainSource));
 
             gameOverCanvas.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
@@ -27,17 +30,19 @@ public class CrashDetector : MonoBehaviour
         }
     }
 
-    IEnumerator FadeOutMusic()
+    IEnumerator FadeOutAudio(AudioSource source)
     {
-        float startVolume = musicSource.volume;
+        if (source == null) yield break;
 
-        while (musicSource.volume > 0)
+        float startVolume = source.volume;
+
+        while (source.volume > 0)
         {
-            musicSource.volume -= startVolume * Time.deltaTime / fadeDuration;
+            source.volume -= startVolume * Time.deltaTime / fadeDuration;
             yield return null;
         }
 
-        musicSource.Stop();
-        musicSource.volume = startVolume; // reset for next play
+        source.Stop();
+        source.volume = startVolume; // reset for reuse
     }
 }
