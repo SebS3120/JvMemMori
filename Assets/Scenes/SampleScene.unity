@@ -6181,8 +6181,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 0.3888704}
+  m_Center: {x: 0, y: 0, z: 0.37078273}
 --- !u!4 &204061457
 Transform:
   m_ObjectHideFlags: 0
@@ -16041,7 +16041,7 @@ Transform:
   m_GameObject: {fileID: 457289169}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -304.3}
+  m_LocalPosition: {x: 0, y: 1.3, z: -304.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -37553,7 +37553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrainLever
   currentDirection: 1
-  rotationAngle: 15
+  rotationAngle: 10
   rotationSpeed: 5
   player: {fileID: 568532845}
   interactDistance: 5
@@ -61874,8 +61874,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 0.4841184}
+  m_Center: {x: 0, y: 0, z: 0.2579408}
 --- !u!4 &1611084920
 Transform:
   m_ObjectHideFlags: 0
@@ -61885,7 +61885,7 @@ Transform:
   m_GameObject: {fileID: 1611084917}
   serializedVersion: 2
   m_LocalRotation: {x: -0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -3.7558997, y: -0.22759077, z: -0.006900024}
+  m_LocalPosition: {x: -3.7558997, y: -0.222, z: -0.006900024}
   m_LocalScale: {x: 0.027852006, y: 0.01, z: 0.92884797}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -62243,8 +62243,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 0.812013}
+  m_Center: {x: 0, y: 0, z: 0.09399341}
 --- !u!4 &1623464942
 Transform:
   m_ObjectHideFlags: 0
