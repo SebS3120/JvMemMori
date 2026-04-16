@@ -22400,7 +22400,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &609388164
 AudioSource:
   m_ObjectHideFlags: 0
@@ -31370,7 +31370,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "'H' pour klaxonner\nFl\xE8ches pour bouger\n"
+  m_text: '''H'' pour klaxonner
+
+    ''W'', ''A'', ''S''. ''D'' pour bouger
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: db883edb308b01c4488b795cc6b679aa, type: 2}
   m_sharedMaterial: {fileID: 3272998061830038652, guid: db883edb308b01c4488b795cc6b679aa, type: 2}
@@ -39730,7 +39734,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Niveau 5 accompli!\nPresque L\xE0!"
+  m_text: Niveau 5 accompli!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: db883edb308b01c4488b795cc6b679aa, type: 2}
   m_sharedMaterial: {fileID: 3272998061830038652, guid: db883edb308b01c4488b795cc6b679aa, type: 2}
@@ -43047,7 +43051,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a4a0fccb44b0824cbc9ea1f4a48a3e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CrashDetector
-  gameOverCanvas: {fileID: 1931134422}
+  gameOverCanvas: {fileID: 634930436}
   train: {fileID: 1111236510}
   crashSound: {fileID: 1096661797}
   musicSource: {fileID: 1083580734}
