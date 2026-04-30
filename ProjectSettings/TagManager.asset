@@ -8,6 +8,7 @@ TagManager:
   - Terrain
   - CinemachineTarget
   - Junction
+  - TARGET
   layers:
   - Default
   - TransparentFX
