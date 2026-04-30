@@ -10,6 +10,7 @@ TagManager:
   - Junction
   - TARGET
   - PROJECTILE
+  - Ball
   layers:
   - Default
   - TransparentFX
